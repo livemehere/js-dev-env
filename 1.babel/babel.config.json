@@ -9,6 +9,13 @@
         "corejs": "3.8"
       }
     ]
+  ],
+  "plugins": [],
+  "overrides": [
+    {
+      "plugins":[
+      ]
+    }
   ]
 }
 

@@ -20,6 +20,8 @@
 - [ ] Parcel
 - [ ] Gulp
 
+- [ ] 모노레포로 만들어서 공통, 개별 설정 해보기
+
 ## 내 생각
 
 - 바벨의 대안은 딱히 없는 것 같다.
@@ -37,3 +39,5 @@
 - `polyfill` 동작은 `core-js` 에서 `require()` 되거나 구현한 구문이 추가된다. (예를 들면 `async`, `await` 은 `core-js` 가 아니라, 구현코드가 추가된다)
 - `async function` 과 `generator` 는 폴리필 하기 위해서 `regenerator-runtime` 패키지를 사용한다. (`@babel/preset-env` 에 다포함되어있다)
 - `core-js` 와 만약 `@babel/polyfill` 패키지를 사용한다면 `devDependencies` 가 아닌 `dependencies` 로 번들에 포함되도록 설치해 주는 것이 올바르다. (폴리필 하는 녀석들이니까)
+- 바벨의 config 는 다양한 방법으로 적용될 수 있다. (예를 들면 `babel.config.js`, `.babelrc`, `package.json` 등등..) 주의 사항으로는 각각이 우선순위가 다르다는 것이다. (예를 들면 `babel.config.js` 가 우선순위가 가장 높다)
+  - 우선 순위는 `babel.config.js` > `.babelrc` > `package.json` 이다.
