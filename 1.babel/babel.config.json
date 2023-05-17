@@ -1,22 +1,9 @@
 {
   "presets": [
-    ["@babel/preset-env",
-      {
-        "targets": {
-          "chrome": "4"
-        },
-        "useBuiltIns": "usage",
-        "corejs": "3.8"
-      }
-    ]
   ],
-  "plugins": [],
-  "overrides": [
-    {
-      "plugins":[
-      ]
-    }
-  ]
+  "plugins": ["@babel/plugin-transform-typescript"],
+  "extensions": [".ts"]
+
 }
 
 

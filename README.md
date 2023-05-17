@@ -30,7 +30,8 @@
 
 ## 바벨
 
-> 🚨 바벨은 코드가 브라우저에서 동작하도록 컴파일 하지 않습니다. **브라우저에서 동작하도록 하려면 webpack 과 같은 번들러의 역할입니다.**
+> ~~🚨 바벨은 코드가 브라우저에서 동작하도록 컴파일 하지 않습니다. **브라우저에서 동작하도록 하려면 webpack 과 같은 번들러의 역할입니다.**~~
+> 바벨은 @babel/preset-env 를 통해서 "modules" 값에 따라서 module 시스템에 맞춰 컴파일을 해준다. (commonjs, esmoudle, umd 등등..)
 
 > 최신 문법을 지원하기 위함이 첫 번째 목적인데, 사실상 요즘 브라우저는 ECMAScript 를 최신버전까지 잘 지원하고 있어서, 이제는 그저 필요한 문법을 파싱하는 것이 주된 목적으로 사용되는 것 같다?(물론 구 브라우저 사용자를 위함이지만.. 거의 안쓰니)
 
@@ -44,8 +45,28 @@
 
 ### 바벨 config 파일 종류
 
+> 각각 merge, override 과정에서 우선순위가 다르다. 
+
 - .babel.config.*
 - .babelrc.*
 - .babelrc
 - package.json (babel key)
 
+### 바벨 config 옵션
+
+- `@babel/cli` 의 경우 `kebab-case` 로 추가해 줄 수 있다.
+- `targets` 을 설정하지 않으면 `ES5` 와 호환되도록 하기 때문에, 코드량을 줄이기 위해서 설정해주는 것이 좋다.
+- `"sourceType": "module" `을 설정하면 `import` `export` 문법을 사용할 수 있다. (commonjs 는 node 환경이라 기본적으로 사용가능하다. 이 설정을 하면 esmoudle 을 사용할 수 있게된다)
+  - "script" 는 `import` `export` 문법을 사용할 수 없고, 스크립트 문법으로 구문을 분석한다.
+  - "unambiguous" 는 `import` `export` 문법이 포함되어있으면 esmoudle 로, 아니면 스크립트로 간주한다.
+
+### Plugin 과 Preset 의 순서
+
+- Plugin > Preset 순서로 적용된다.
+- Plugin 끼리는 `first to last` 순서이다.
+- Preset 끼리는 `last to first` 순서이다.
+
+### 마지막 바벨 TODO
+
+- [ ] @babel/preset-typescript 로 타입스크립트 컴파일 해보기
+- [ ] 커스텀 바벨 플러그인 만들기
