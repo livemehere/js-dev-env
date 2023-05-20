@@ -1,9 +1,6 @@
 {
-  "presets": [
-  ],
-  "plugins": ["@babel/plugin-transform-typescript"],
-  "extensions": [".ts"]
-
+  "presets": ["@babel/preset-typescript"],
+  "plugins": []
 }
 
 
