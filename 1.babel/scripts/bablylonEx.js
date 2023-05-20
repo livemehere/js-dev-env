@@ -24,3 +24,8 @@ const output = generate(ast);
 
 console.log(output)
 
+const b = t.binaryExpression('+', t.identifier('z'), t.identifier('z'));
+const r = t.isBinaryExpression(b, {
+    operator: '*',
+})
+console.log(r)

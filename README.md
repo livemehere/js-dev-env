@@ -105,3 +105,11 @@
 - `visitor` 는 `key` 가 `AST` 의 `type` 이고, 이를 입맛대로 조정한다.
 
 > path 모듈을 사용해야, node 스크립트가 실행되는 위치에 상관없이, 현재 파일의 경로를 가져올 수 있다.
+
+- `@babel/parser` 는 `parse()` 메서드를 통해서 `AST` 를 생성한다.
+- `@babel/traverse` 는 `traverse()` 메서드를 통해서 `AST` 를 탐색한다. (with `visitor`)
+- `@babel/generator` 는 `generate()` 메서드를 통해서 `AST` 를 코드로 변환한다.
+- `@babel/types` 는 `types` 객체를 통해서 `AST` 를 생성 혹은 검증 한다.
+- `@babel/template` 는 `template()` 메서드를 통해서 `AST` 를 생성한다.
+  - %%placeholder%% 를 통해서, `AST` 를 생성할 때, `placeholder` 를 넣을 수 있다.
+  - 혹은 대문자를 통해서 placeholder 로 사용할 수 있다.
