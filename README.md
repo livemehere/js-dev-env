@@ -71,3 +71,35 @@
 - [x] @babel/preset-typescript 로 타입스크립트 컴파일 해보기
   -  타입스크립트를 컴파일 하기 위해서는, `cli` 의 경우 `--extensions` `.ts` 를 추가해주어야한다. `config` 파일에서는 설정할 수 없는 옵션이다.
 - [ ] 커스텀 바벨 플러그인 만들기
+
+### 커스텀 플러그인 만들기
+
+- 타입에 따라서 AST 의 각 레벨들의 구조가 다르다.
+
+```json5
+{
+  type: "FunctionDeclaration",
+  id: {...},
+  params: [...],
+  body: {...}
+}
+```
+
+```json5
+{
+  type: "Identifier",
+  name: ...
+}
+```
+
+```json5
+{
+  type: "BinaryExpression",
+  operator: ...,
+  left: {...},
+  right: {...}
+}
+```
+
+- plugin 은 객체를 반환해야하는데, `visitor` 라는 키를 가지고 있다.
+- `visitor` 는 `key` 가 `AST` 의 `type` 이고, 이를 입맛대로 조정한다.
