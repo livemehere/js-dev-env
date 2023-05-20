@@ -1,11 +1,13 @@
 const babel = require('@babel/core');
-const examplePlugin = require('../plugin/example.js');
+const examplePlugin = require('../plugin/basic.js');
 const fs = require('fs');
 
 const input = fs.readFileSync('./src/app.js',{encoding:'utf-8'});
 const output = babel.transformSync(input,{
     filename:'app.js',
-    plugins: [examplePlugin],
+    plugins: [[examplePlugin,{
+        log:true
+    }]],
 });
 
 if(!fs.existsSync('dist')){

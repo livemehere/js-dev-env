@@ -1,4 +1,3 @@
-function square(z) {
-  return z * z;
+function square(n) {
+  return n * z;
 }
-n;
