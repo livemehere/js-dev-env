@@ -2,9 +2,9 @@
 
 ## TODO
 
-- [🏃] 바벨 
-- [ ] TypeScript
+- [x] 바벨 
 - [ ] 웹팩
+- [ ] TypeScript
 - [ ] ESLint
 - [ ] Prettier
 
