@@ -10,6 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/generator": "^7.21.5",
+    "@babel/parser": "^7.21.8",
+    "@babel/traverse": "^7.21.5",
+    "@babel/types": "^7.21.5",
+    "babel-traverse": "^6.26.0",
+    "babylon": "^6.18.0",
     "core-js": "^3.30.2"
   },
   "devDependencies": {
