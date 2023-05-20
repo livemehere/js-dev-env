@@ -4,6 +4,7 @@
 
 - [x] 바벨 
 - [ ] 웹팩
+- [ ] HMR (Hot Module Replacement) 분석과 구현
 - [ ] TypeScript
 - [ ] ESLint
 - [ ] Prettier
