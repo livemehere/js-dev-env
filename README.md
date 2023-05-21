@@ -5,6 +5,7 @@
 - [x] 바벨 
 - [ ] 웹팩
 - [ ] HMR (Hot Module Replacement) 분석과 구현
+- [ ] 모노레포
 - [ ] TypeScript
 - [ ] ESLint
 - [ ] Prettier
@@ -115,3 +116,16 @@
 - `@babel/template` 는 `template()` 메서드를 통해서 `AST` 를 생성한다.
   - %%placeholder%% 를 통해서, `AST` 를 생성할 때, `placeholder` 를 넣을 수 있다.
   - 혹은 대문자를 통해서 placeholder 로 사용할 수 있다.
+
+## 웹팩(Webpack)
+
+- 웹팩은 정적 모듈 번들러이다.
+- webpack 은 기본적으로 javascript 와 json 만 처리할 수 있다.
+  - 하지만 `loader` 를 통해서 다른 파일들을 처리할 수 있다.
+- plugin 은 웹팩의 기능을 확장할 수 있다.
+  - 대부분은 new 키워드로, 인스턴스를 만들어 사용한다.
+
+### 흐름도
+
+Entry -> Loaders(babel, less, img...) -> Plugins(개발환경, 최적화..) -> Output
+
