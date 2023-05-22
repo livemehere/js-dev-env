@@ -1,9 +1,15 @@
 # 자바스크립트 개발환경 상세 분석
 
+## 의문점
+
+- [ ] babel preset 배열은 last to first 순서인데, 왜 preset-env 와 preset-typescript 는 순서에 상관없이 잘 동작하는가? preset-env 가 먼저 적용되면 .ts 를 컴파일하지 못해서 에러를 발생해야 할 것 같은데 ...
+- 
+
+
 ## TODO
 
 - [x] 바벨 
-- [ ] 웹팩
+- [🏃‍️] 웹팩
 - [ ] HMR (Hot Module Replacement) 분석과 구현
 - [ ] 모노레포
 - [ ] TypeScript
@@ -34,7 +40,9 @@
 ## 바벨
 
 > ~~🚨 바벨은 코드가 브라우저에서 동작하도록 컴파일 하지 않습니다. **브라우저에서 동작하도록 하려면 webpack 과 같은 번들러의 역할입니다.**~~
-> 바벨은 @babel/preset-env 를 통해서 "modules" 값에 따라서 module 시스템에 맞춰 컴파일을 해준다. (commonjs, esmoudle, umd 등등..)
+> 바벨은 @babel/preset-env 를 통해서 "modules" 값에 따라서 module 시스템에 맞춰 컴파일을 해준다.
+> default 값은 node 이며, 이떄는 commonjs 모듈을 사용하고, modules:false 일 시에는 ESModule 를 사용한다.
+> 단, modules:false 라도 원본 소스코드가 commonjs 라면 그것을 ESModule 로 변경하지는 않는다.
 
 > 최신 문법을 지원하기 위함이 첫 번째 목적인데, 사실상 요즘 브라우저는 ECMAScript 를 최신버전까지 잘 지원하고 있어서, 이제는 그저 필요한 문법을 파싱하는 것이 주된 목적으로 사용되는 것 같다?(물론 구 브라우저 사용자를 위함이지만.. 거의 안쓰니)
 
@@ -67,7 +75,7 @@
 
 - Plugin > Preset 순서로 적용된다.
 - Plugin 끼리는 `first to last` 순서이다.
-- Preset 끼리는 `last to first` 순서이다.
+- Preset 끼리는 `last to first` 순서이다. 
 
 ### 마지막 바벨 TODO
 
@@ -124,6 +132,9 @@
   - 하지만 `loader` 를 통해서 다른 파일들을 처리할 수 있다.
 - plugin 은 웹팩의 기능을 확장할 수 있다.
   - 대부분은 new 키워드로, 인스턴스를 만들어 사용한다.
+- 웹팩으로 번들링 하기 전 코드는 commonjs 나 ESModule 둘다 사용 가능하다.
+  - 왜냐하면... 코드는 모듈처럼 동작하도록 바꾸는 것이고, 결국 하나의 물리적인 파일로 만들어 주기 때문이다.
+- 
 
 ### 흐름도
 
