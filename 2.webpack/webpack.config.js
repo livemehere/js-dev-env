@@ -1,4 +1,5 @@
 module.exports = {
+    target:'web',
     mode:'development',
     entry:{
         index:'./index.ts'
@@ -15,5 +16,12 @@ module.exports = {
                 {loader: 'css-loader'},
             ]},
         ]
+    },
+    resolve:{
+        extensions:['.ts', '.js'],
+        alias:{
+            '@':__dirname
+        },
+        modules:[__dirname,'node_modules']
     }
 }

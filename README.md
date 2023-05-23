@@ -9,6 +9,7 @@
 - [x] 바벨 
 - [🏃‍️] 웹팩
 - [ ] 웹팩 커스텀 로더
+- [ ] 웹팩 커스텀 플러그인
 - [ ] HMR (Hot Module Replacement) 분석과 구현
 - [ ] 모노레포
 - [ ] TypeScript
@@ -138,7 +139,7 @@
   - 하지만 `loader` 를 통해서 다른 파일들을 처리할 수 있다.
 - plugin 은 웹팩의 기능을 확장할 수 있다.
   - 대부분은 new 키워드로, 인스턴스를 만들어 사용한다.
-- 웹팩으로 번들링 하기 전 코드는 commonjs 나 ESModule 둘다 사용 가능하다.
+- 웹팩으로 번들링 하기 전 코드는 `commonjs` 나 `ESModule` 둘다 사용 가능하다.
   - 왜냐하면... 코드는 모듈처럼 동작하도록 바꾸는 것이고, 결국 하나의 물리적인 파일로 만들어 주기 때문이다.
 - 자동으로 사용하지 않는 코드들을 제거하고, 합치면서 최적화한다.
 - 웹팩에서 경험상, 하나의 html 파일에 하나의 번들.js 를 삽입한다. 즉, multi-page(html) 갯수 만큼 entry 를 만들어 주는 것이 일반 적이다.
@@ -155,4 +156,48 @@ Entry -> Loaders(babel, less, img...) -> Plugins(개발환경, 최적화..) -> O
 
 - loader 는 import 되는 시점에서 전처리를 진행한다.
 - loader 체인의 끝은 항상 javascript 여야하고, 웹팩도 그럴 것이라고 예상한다.
-- 
+
+### Plugins
+
+- webpack 의 기본이며, loader 가 처리할 수 없는 일들을 처리한다.
+
+### resolve
+
+- 웹팩은 모듈을 해석할 때 `절대경로`, `상대경로`는 그대로 처리하고, `resolve` 옵션을 통해서 커스텀 할 수 있다.
+- `resolve` 는 모듈을 해석할 때, 어떤식으로 해석할지 정의한다.
+- 다른 것 보다 절대 경로를 설정할 경우가 많은데, `webpack` 과 `tsconfig.json` 모두 설정해주어야한다. 에디터는 `config` 파일을 따라 린팅해주기 때문에 만약 webpack 만 설정한다면 오류는 안나지만, ts-loader 에서 경고메세지, 에디터에서 린트가 발생한다. 아래 예시 참고
+
+
+#### webpack
+
+- --watch 는 파일이 변경될 때마다, 다시 빌드한다.
+- webpack-dev-server --hot 은 변경된 파일만 다시 빌드한다.
+- nodejs 에만 있었던 모듈 시스템을 브라우저에도 도입할 수 있게 해주었다.
+- js 이외의 모든 에셋도 한번에 처리할 수 있게 됬다.
+
+```js
+    resolve:{
+        extensions:['.ts', '.js'],
+        alias:{
+            '@':__dirname
+        },
+        modules:[__dirname,'node_modules']
+    }
+```
+
+#### tsconfig.json
+
+```json
+{
+  "paths" : {
+    "@/*" : ["./*"]
+  }
+}
+```
+
+### target 
+
+??!
+
+### HMR(Hot Module Replacement)
+

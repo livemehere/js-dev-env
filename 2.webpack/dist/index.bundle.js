@@ -116,7 +116,17 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \******************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\n__webpack_require__(/*! ./style.css */ \"./style.css\");\nfunction sum(a, b) {\n    return a + b;\n}\nconsole.log(sum(1, 2));\n\n\n//# sourceURL=webpack://2.webpack/./index.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\n__webpack_require__(/*! ./style.css */ \"./style.css\");\nvar me_1 = __webpack_require__(/*! @/shared/me */ \"./shared/me.js\");\nfunction sum(a, b) {\n    return a + b;\n}\nconsole.log(sum(1, 2));\n(0, me_1.default)();\n\n\n//# sourceURL=webpack://2.webpack/./index.ts?");
+
+/***/ }),
+
+/***/ "./shared/me.js":
+/*!**********************!*\
+  !*** ./shared/me.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ shareMe)\n/* harmony export */ });\nfunction shareMe(){\n    console.log('shareMe')\n}\n\n//# sourceURL=webpack://2.webpack/./shared/me.js?");
 
 /***/ })
 
