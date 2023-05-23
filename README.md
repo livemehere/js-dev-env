@@ -201,3 +201,6 @@ Entry -> Loaders(babel, less, img...) -> Plugins(개발환경, 최적화..) -> O
 
 ### HMR(Hot Module Replacement)
 
+- HMR 은 변경된 모듈만 다시 로드하는 기능이다.
+- HMR 은 `webpack-dev-server` 에서만 동작한다. 다른 방법으로 직접 구현할 수 도 있다.
+
