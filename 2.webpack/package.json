@@ -2,7 +2,7 @@
   "name": "2.webpack",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "css-loader": "^6.7.4",
+    "style-loader": "^3.3.3",
+    "ts-loader": "^9.4.3",
     "webpack": "^5.83.1",
     "webpack-cli": "^5.1.1"
   },

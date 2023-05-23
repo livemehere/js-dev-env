@@ -3,13 +3,12 @@
 ## 의문점
 
 - [ ] babel preset 배열은 last to first 순서인데, 왜 preset-env 와 preset-typescript 는 순서에 상관없이 잘 동작하는가? preset-env 가 먼저 적용되면 .ts 를 컴파일하지 못해서 에러를 발생해야 할 것 같은데 ...
-- 
-
 
 ## TODO
 
 - [x] 바벨 
 - [🏃‍️] 웹팩
+- [ ] 웹팩 커스텀 로더
 - [ ] HMR (Hot Module Replacement) 분석과 구현
 - [ ] 모노레포
 - [ ] TypeScript
@@ -30,12 +29,19 @@
 
 - [ ] 모노레포로 만들어서 공통, 개별 설정 해보기
 
+## 종합 메모
+
+- 바벨, 웹팩에서 역순으로 적용되는 것들은
+  - 바벨 : presets
+  - 웹팩 : loader
+
 ## 내 생각
 
 - ~~바벨의 대안은 딱히 없는 것 같다.~~ ~~(SWC 는 아직 생태계가 부족하지앟나..?)~~
 - 바벨의 대안은 미래 창창한 SWC 이다!
 - `parcel` 은 점유율을 생각해 봤을때 굳이 안배워도 될것 같다..
 - 번들러 툴 중에서는 웹팩이 압도적이다. 하지만 `rollup` 과 `vite` 의 DX 가 뛰어나서 추가로 배워보기 좋을 것 같다.
+- 개발환경을 세팅한다고 하면 바벨, swc 로만 하려고 하기 보다는, webpack or rollup or vite 와 같은 번들러로 시작해야한다는 생각을 하는게 좋다.(어차피 쓰는게 맘편하다)
 
 ## 바벨
 
@@ -134,9 +140,19 @@
   - 대부분은 new 키워드로, 인스턴스를 만들어 사용한다.
 - 웹팩으로 번들링 하기 전 코드는 commonjs 나 ESModule 둘다 사용 가능하다.
   - 왜냐하면... 코드는 모듈처럼 동작하도록 바꾸는 것이고, 결국 하나의 물리적인 파일로 만들어 주기 때문이다.
-- 
+- 자동으로 사용하지 않는 코드들을 제거하고, 합치면서 최적화한다.
+- 웹팩에서 경험상, 하나의 html 파일에 하나의 번들.js 를 삽입한다. 즉, multi-page(html) 갯수 만큼 entry 를 만들어 주는 것이 일반 적이다.
+- `[fullhash]` 값은 webpack 설정별로 고유하다.(=변경사항이 없으면 동일하다)
+- publicPath 는 `output` 에서 설정할 수 있고, dev-server 에 영향을 미친다.
+  - `output` 에서 설정한 `publicPath` 는 `html` 에서 `script` 태그의 `src` 에 적용된다.
+  - `output` 에서 설정한 `publicPath` 는 `css` 에서 `background-image` 의 `url` 에 적용된다.
 
 ### 흐름도
 
 Entry -> Loaders(babel, less, img...) -> Plugins(개발환경, 최적화..) -> Output
 
+### Loaders
+
+- loader 는 import 되는 시점에서 전처리를 진행한다.
+- loader 체인의 끝은 항상 javascript 여야하고, 웹팩도 그럴 것이라고 예상한다.
+- 
