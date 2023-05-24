@@ -204,3 +204,38 @@ Entry -> Loaders(babel, less, img...) -> Plugins(개발환경, 최적화..) -> O
 - HMR 은 변경된 모듈만 다시 로드하는 기능이다.
 - HMR 은 `webpack-dev-server` 에서만 동작한다. 다른 방법으로 직접 구현할 수 도 있다.
 
+### Asset Management
+
+- less, sass, scss, post-css 등 css 전처리기는 `npm i {전처리기}-loader` 와 `npm i 전처리기` , 이렇게 보통 둘다 설치하는 형태이다.
+- post-css 의 경우 postcss.config.js 를 loader 가 자동 인식한다. 타입추론은 별도의 패키지로 제공하고있다.
+
+```js
+/**
+ * @type {import('postcss-load-config').Config}
+ */
+const config = {}
+module.exports = config;
+```
+
+- 이미지,폰트 에셋 처리하는 아래 예시는 안되니, file-loader, url-loader 를 사용해야한다.(안되는건데 업데이트 안할 걸지도?)
+
+```js
+ module: {
+   rules: [
+     {
+       test: /\.png/,
+       type: 'asset/resource'
+     }
+   ]
+ }
+```
+
+- 에셋 추출을 해시와 함께한다면, 추후 불펌해가진 리소스에 대한 서버 비용을 아낄 수 있다?!
+- json 은 webpack 에서 기본적으로 객체로 import 를 지원하지만 .ts 에서는 .tsconfig.json 의 설정에 따른다. 아래 두개 설정을 해줘야한다.
+
+```json
+{
+  "resolveJsonModule":true,
+  "esModuleInterop":true
+}
+```

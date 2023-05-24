@@ -1,9 +1,10 @@
 import './style.css'
 import sm from '@/shared/me';
+import jsImg from '@/assets/js.png';
+import data from '@/assets/data.json';
 
-function sum(a: number, b: number) {
-  return a + b
-}
+const img = new Image()
+img.src = jsImg;
+document.body.appendChild(img);
 
-console.log(sum(1,2))
-sm();
+console.log(data)
