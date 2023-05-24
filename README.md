@@ -167,14 +167,6 @@ Entry -> Loaders(babel, less, img...) -> Plugins(개발환경, 최적화..) -> O
 - `resolve` 는 모듈을 해석할 때, 어떤식으로 해석할지 정의한다.
 - 다른 것 보다 절대 경로를 설정할 경우가 많은데, `webpack` 과 `tsconfig.json` 모두 설정해주어야한다. 에디터는 `config` 파일을 따라 린팅해주기 때문에 만약 webpack 만 설정한다면 오류는 안나지만, ts-loader 에서 경고메세지, 에디터에서 린트가 발생한다. 아래 예시 참고
 
-
-#### webpack
-
-- --watch 는 파일이 변경될 때마다, 다시 빌드한다.
-- webpack-dev-server --hot 은 변경된 파일만 다시 빌드한다.
-- nodejs 에만 있었던 모듈 시스템을 브라우저에도 도입할 수 있게 해주었다.
-- js 이외의 모든 에셋도 한번에 처리할 수 있게 됬다.
-
 ```js
     resolve:{
         extensions:['.ts', '.js'],
@@ -194,6 +186,14 @@ Entry -> Loaders(babel, less, img...) -> Plugins(개발환경, 최적화..) -> O
   }
 }
 ```
+
+
+#### webpack
+
+- --watch 는 파일이 변경될 때마다, 다시 빌드한다.
+- webpack-dev-server --hot 은 변경된 파일만 다시 빌드한다.
+- nodejs 에만 있었던 모듈 시스템을 브라우저에도 도입할 수 있게 해주었다.
+- js 이외의 모든 에셋도 한번에 처리할 수 있게 됬다.
 
 ### target 
 
