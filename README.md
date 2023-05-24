@@ -217,7 +217,7 @@ const config = {}
 module.exports = config;
 ```
 
-- 이미지,폰트 에셋 처리하는 아래 예시는 안되니, file-loader, url-loader 를 사용해야한다.(안되는건데 업데이트 안할 걸지도?)
+- **아래 예시처럼 type 문법은 .js 에만 동작하고, .ts 에서는 안되니 file-loader 를 사용해준다.**
 
 ```js
  module: {
@@ -239,3 +239,7 @@ module.exports = config;
   "esModuleInterop":true
 }
 ```
+
+### output
+
+- clean:true 속성으로 번들전 폴더를 비운다.
