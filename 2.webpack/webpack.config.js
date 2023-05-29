@@ -8,12 +8,21 @@ module.exports = {
     target: 'web',
     mode: process.env.NODE_ENV,
     entry: {
-        index: './index.ts'
+        index: './index.ts',
+        second :'./second.js'
     },
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
         clean:true
+    },
+    devtool: isDev ? 'inline-source-map' : false,
+    devServer:{
+        static: path.resolve(__dirname, 'dist'),
+        hot:true,
+    },
+    optimization: {
+        runtimeChunk: 'single',
     },
     module: {
         rules: [
@@ -41,7 +50,7 @@ module.exports = {
                         loader: 'file-loader',
                         options: {
                             outputPath: 'assets',
-                            publicPath: isDev ? 'http://localhost:63342/all-about-js-dev/2.webpack/dist/assets' : 'https://cdn.kong.com/assets',
+                            publicPath: isDev ? '' : 'https://cdn.kong.com/assets',
                         }
                     }
                 ]

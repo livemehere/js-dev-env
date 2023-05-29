@@ -15,6 +15,8 @@
 - [ ] TypeScript
 - [ ] ESLint
 - [ ] Prettier
+- [ ] react, vue SSR 서버 구축
+- [ ] react, vue, svelte 개발환경 구축
 
 - [ ] Yarn
 - [ ] NPM
@@ -240,6 +242,25 @@ module.exports = config;
 }
 ```
 
+### optimization
+
+- runtimeChunk:true 옵션을 넣어 주어야만, 각 모듈을 단 한번만 호출한다.
+  - 그렇지 않으면 엔트리 포인트 별로 각각 모듈을 중복적으로 import 한다.
+
 ### output
 
 - clean:true 속성으로 번들전 폴더를 비운다.
+
+### Development
+
+- `devtool: 'inline-source-map'` 옵션으로 디버깅을 한다. 그렇지 않다면 항상 번들된 하나의 js 만을 가르킨다.
+- watch, webpack-dev-server, webpack-dev-middleware 이 있다.
+
+#### watch
+
+- 모든 코드를 감시하며, 전체 빌드를 재수행한다. 새로고침 해주어야한다는 단점이 있다.
+
+### Code Splitting
+
+- 엔트리 포인트로 분리
+- 동적 import 로 개별 로딩

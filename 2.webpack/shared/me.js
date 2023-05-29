@@ -1,3 +1,6 @@
-export default  function shareMe(){
-    console.log('shareMe')
+
+const obj = {
+    count:0
 }
+
+export default obj;
