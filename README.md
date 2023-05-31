@@ -296,3 +296,31 @@ libraryTarget: 'umd'
 ```
 
 - export default 로 작성하면, `모듈이름.default` 로 접근이 가능하다.
+
+### CLI 로 ENV 전달하기
+
+
+1. `webpack.config.js` 에서 `module.exports = (env)=>{}` 로 함수를 만들어준다.
+
+```js
+module.exports = (env)=> {
+    console.log(env)
+    return {
+        entry: './src/uuid.js',
+        output: {
+            filename: `${env.output}.js`,
+            path: path.resolve(__dirname, 'dist'),
+            library: 'uuid',
+            globalObject: 'this',
+            libraryTarget: 'umd',
+        },
+    }
+}
+```
+
+2. `package.json` 에서 `--env` 로 전달한다.
+  
+```bash
+webpack --env output=uuid
+```
+
