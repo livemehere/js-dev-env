@@ -8,13 +8,11 @@
 
 - [x] 바벨 
 - [🏃‍️] 웹팩
-- [ ] 웹팩 커스텀 로더
-- [ ] 웹팩 커스텀 플러그인
-- [ ] HMR (Hot Module Replacement) 분석과 구현
-- [ ] 모노레포
-- [ ] TypeScript
 - [ ] ESLint
 - [ ] Prettier
+- [ ] TypeScript
+- [ ] HMR (Hot Module Replacement) 분석과 구현
+- [ ] 모노레포
 - [ ] react, vue SSR 서버 구축
 - [ ] react, vue, svelte 개발환경 구축
 
@@ -333,3 +331,4 @@ webpack --env output=uuid
 
 - 이건 문서에는 development 모드에서 동작하지 않는다고 하는데, 되고있고, 별도의 설정을 하지 않아도 작동하고있다.
 
+## 개발환경 만들어보기
