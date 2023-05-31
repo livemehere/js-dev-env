@@ -324,3 +324,12 @@ module.exports = (env)=> {
 webpack --env output=uuid
 ```
 
+### 빌드 포퍼먼스 꿀팁 들
+
+[문서](https://webpack.kr/guides/build-performance/)
+
+
+### Tree shaking
+
+- 이건 문서에는 development 모드에서 동작하지 않는다고 하는데, 되고있고, 별도의 설정을 하지 않아도 작동하고있다.
+
