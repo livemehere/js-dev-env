@@ -283,3 +283,16 @@ module.exports = config;
        },
   };
 ```
+
+### 라이브러리 만들기
+
+- 기본적으로 웹팩을 라이브러리 모드로하면, script 태그 전용으로 번들링한다.
+  - `globalObject` 의 객체에 추가하는 방식으로 번들링한다. 예를들면 uuid 라는 함수를 만들면 `window.[라이브러리이름].uuid()` 로 접근이 가능하다.
+- node 환경, script 로 추가해서 window 에 추가 하는, 둘다 지원하려면 아래와 같은 설정을 추가해준다.
+
+```js
+globalObject: 'this'
+libraryTarget: 'umd'
+```
+
+- export default 로 작성하면, `모듈이름.default` 로 접근이 가능하다.
