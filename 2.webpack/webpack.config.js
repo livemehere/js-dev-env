@@ -9,10 +9,9 @@ module.exports = {
     mode: process.env.NODE_ENV,
     entry: {
         index: './index.ts',
-        second :'./second.js'
     },
     output: {
-        filename: '[name].bundle.js',
+        filename: '[name].[contenthash].bundle.js',
         path: path.resolve(__dirname, 'dist'),
         clean:true
     },
@@ -22,7 +21,17 @@ module.exports = {
         hot:true,
     },
     optimization: {
-        runtimeChunk: 'single',
+        moduleIds: 'deterministic', // 없어도 동작함.
+        runtimeChunk: 'single', // 여러 엔트리 일 경우 모듈을 중복 로드 하는 것을 방지
+        splitChunks:{
+            cacheGroups:{
+                vendor:{ // 캐싱할 단위로 파일을 분리
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all'
+                }
+            }
+        }
     },
     module: {
         rules: [

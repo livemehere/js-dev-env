@@ -264,3 +264,22 @@ module.exports = config;
 
 - 엔트리 포인트로 분리
 - 동적 import 로 개별 로딩
+
+### Caching
+
+- 네이밍에 `[contenthash]` 는 마치 Etag 처럼 변경사항이 없다면 유지된다. 이것으로 번들 결과가 캐싱됬는지 확인 가능하다.
+- 아래처럼 외부 모듈을 캐싱하는 방법이라고 소개하는데, 이렇게 안해도 알아서 캐싱이 되고있는거 같다.
+
+```js
+    optimization: {
+      runtimeChunk: 'single',
+     splitChunks: {
+       cacheGroups: {
+         vendor: {
+           test: /[\\/]node_modules[\\/]/,
+           name: 'vendors',
+           chunks: 'all',
+         },
+       },
+  };
+```

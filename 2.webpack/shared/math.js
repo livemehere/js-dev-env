@@ -14,4 +14,4 @@ export function multiply(a,b){
 }
 
 
-obj.count++;
+obj.count--;
