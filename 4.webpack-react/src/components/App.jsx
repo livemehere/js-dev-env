@@ -1,3 +1,6 @@
 export default function App(){
-    return <div>App123222</div>
+    return <div>
+        <h1>피카츄</h1>
+        <img src="/pica.png" alt=""/>
+    </div>
 }

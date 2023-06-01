@@ -29,6 +29,8 @@ module.exports = {
     devServer: {
         port: 3000,
         open: true,
-        hot: true,
+        static:{
+            directory: path.resolve(__dirname, 'public'), // 기본값이라 생략 가능 (개발서버에서만 적용됨, 번들 후 는 별도로 적용필요)
+        }
     }
 }
