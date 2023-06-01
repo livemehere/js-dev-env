@@ -7,6 +7,7 @@ module.exports = {
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
+        publicPath:'https://cdn.kong.com/'
     },
     devtool: 'inline-source-map',
     resolve:{
