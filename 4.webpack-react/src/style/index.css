@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'kong-font';
+    src: url('@public/Gugi-Regular.ttf');
+}
+
+
+body{
+    background: #d2d2d2;
+}
+
+
+*{
+    font-family: 'kong-font', sans-serif;
+}
+
