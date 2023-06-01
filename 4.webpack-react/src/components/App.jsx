@@ -1,8 +1,9 @@
-import ImgSrc from "@public/pica.png";
+import data from '@public/data.json'
 
 export default function App(){
+    console.log(data)
     return <div>
         <h1>피카츄</h1>
-        <img src={ImgSrc} alt=""/>
+        <img src='/pica.png' alt=""/>
     </div>
 }
