@@ -1,4 +1,4 @@
-import ImgSrc from "../../public/pica.png";
+import ImgSrc from "@public/pica.png";
 
 export default function App(){
     return <div>
