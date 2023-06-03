@@ -5,10 +5,16 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue';
+
+type Data = {
+  level: number
+}
+
+export default Vue.extend({
   name: 'User',
-  data(){
+  data():Data{
     return {
       level:0
     }
@@ -16,9 +22,13 @@ export default {
   methods:{
     levelUp(){
       this.level++;
+    },
+    powerUp(mount:number){
+      this.level += mount;
     }
+
   }
-}
+})
 </script>
 
 <style scoped lang="less">

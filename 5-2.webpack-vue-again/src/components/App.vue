@@ -6,10 +6,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import User from "./User";
+import Vue from "vue";
 
-export default {
+export default Vue.extend({
   name: 'App',
   components: {
     User
@@ -24,6 +25,6 @@ export default {
       alert('Hello')
     }
   }
-}
+})
 </script>
 

@@ -6,17 +6,25 @@ module.exports = {
     entry: './src/index.js',
     output: {
         filename: 'bundle.js',
-        path: path.join(__dirname,'dist')
+        path: path.join(__dirname, 'dist')
     },
     module: {
-        rules:[
+        rules: [
             {
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                loader: 'vue-loader',
+
+            },
+            {
+                test: /\.tsx?$/,
+                loader: 'ts-loader',
+                options: {
+                    transpileOnly: true,
+                }
             },
             {
                 test: /\.(c|le)ss$/,
-                use:['style-loader','css-loader','less-loader']
+                use: ['style-loader', 'css-loader', 'less-loader']
             }
         ]
     },
@@ -27,9 +35,9 @@ module.exports = {
         }),
     ],
     devServer: {
-        port:3000
+        port: 3000
     },
-    resolve:{
-        extensions: ['.js','.vue']
+    resolve: {
+        extensions: ['.js', '.vue']
     }
 }
