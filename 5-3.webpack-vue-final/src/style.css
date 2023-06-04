@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Gugi';
+    font-style: normal;
+    font-weight: 400;
+    src: url('@public/Gugi-Regular.ttf');
+}
+
+*{
+    font-family: 'Gugi', sans-serif;
+}

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>App Component</h1>
+    <h1>App Component2</h1>
     <p>{{ msg }}</p>
     <User/>
   </div>

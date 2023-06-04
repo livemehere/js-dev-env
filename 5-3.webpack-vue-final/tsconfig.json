@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+//    권장
+    "target": "es2015",
+    "module": "esNext",
+    "strict": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+        "@src/*": ["src/*"],
+        "@public/*": ["public/*"]
+    },
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true
+  }
+}
