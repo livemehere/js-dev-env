@@ -7,14 +7,15 @@
 ## TODO
 
 - [x] 바벨 
-- [🏃‍️] 웹팩
-- [ ] ESLint
-- [ ] Prettier
+- [x] 웹팩
+- [x] react, vue 개발환경 구축
+- [x] ESLint
+- [x] Prettier
 - [ ] TypeScript
 - [ ] HMR (Hot Module Replacement) 분석과 구현
 - [ ] 모노레포
-- [ ] react, vue SSR 서버 구축
-- [ ] react, vue, svelte 개발환경 구축
+- [ ] svelte 개발환경 구축 및 비교분석
+- [ ] React, Vue SSR 서버 만들기
 
 - [ ] Yarn
 - [ ] NPM
@@ -335,5 +336,25 @@ webpack --env output=uuid
 
 ### React
 
-- [ ] src, 와 public 을 구분해서 에셋은 번들하지 않는게 좋을까?
-- 
+- jsx 문법 파싱만 ts-loader 혹은 babel-loader 에 맞기면 되고 별다른 이슈 없이 정직하게 구축된다. (유튜브 영상으로 설명 대체)
+
+### Vue
+
+- vue 는 프레임워크 답게 별도의 `vue-loader` 와 내장되어있는 `VueLoaderPlugin` 을 적용해주어야한다.
+  - 아마 내부적으로 `*.vue` 파일을 파싱하는 `vue-template-compiler` 를 사용하는거 같다.
+- vue 파일이 `html`, `css`, `js` 의 결과물로 나오는데, 그래서 `style, css loader` 도 필수적이다.
+- typescript 는 애를 좀 먹었는데, `ts-loader` 에 `*.vue` 를 인식하기 위한 아래와 같은 설정을 해주어야한다.
+
+```js
+{
+    test:/\.tsx?$/,
+    loader: 'ts-loader',
+    options: { appendTsSuffixTo: [/\.vue$/] },
+}
+```
+
+- vue 파일에서 `script` 부분에 `lang="ts"` 를 추가해주어야한다.
+- `export default` 하는 객체를 `Vue.extend()` 로 감싸주어야한다. 
+- 마찬가지로 유튜브 영상으로 긴 설명을 대체.
+
+> 공통적으로 적용 했던 부분은 에셋관리인데, 에셋은 src 폴더 외부에 public 폴더에서 관리하고, `copy-webpack-plugin` 으로 번들 결과에 복사해주었다.(dist 파일만 배포하면 되도록)
